@@ -32,7 +32,7 @@ class PelabuhanController extends Controller
     public function home(){
         $user = $this->getUser();
         $operasional = OperasionalPelabuhan::where('id_pelabuhan', $user->id)->get();
-        $bongkarmuat = OperasionalPelabuhan::where('id_pelabuhan', $user->id)->get();
+        $bongkarmuat = BongkarMuatPelabuhan::where('id_pelabuhan', $user->id)->get();
         return view('layout.pelabuhan.home', compact('user', 'operasional'));
     }
 
