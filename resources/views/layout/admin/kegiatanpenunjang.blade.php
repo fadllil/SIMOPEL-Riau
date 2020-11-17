@@ -104,6 +104,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
+                                                <label>Email</label>
+                                                <div class="input-group mb-3">
+                                                    <input name="email" type="email" class="form-control" placeholder="Email@gmail.com" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Level Akses</label>
                                                 <div class="input-group mb-3">
                                                     <input name="level_akses" type="text" class="form-control" value="Kegiatan Penunjang" readonly required>
@@ -180,6 +186,7 @@
                                     <th rowspan="2" style="width: 10px">No</th>
                                     <th colspan="2">Perusahaan</th>
                                     <th rowspan="2">Bidang Usaha</th>
+                                    <th rowspan="2">Email</th>
                                     <th colspan="2">Penanggung Jawab</th>
                                     <th colspan="2">Izin Usaha</th>
                                     <th rowspan="2">NPWP</th>
@@ -205,6 +212,7 @@
                                     <td>{{$kegiatanpenunjang->nama_perusahaan}}</td>
                                     <td>{{$kegiatanpenunjang->alamat_perusahaan}}</td>
                                     <td>{{$kegiatanpenunjang->bidang_usaha}}</td>
+                                    <td>{{$kegiatanpenunjang->email}}</td>
                                     <td>{{$kegiatanpenunjang->nama_pj}}</td>
                                     <td>{{$kegiatanpenunjang->alamat_pj}}</td>
                                     <td>{{$kegiatanpenunjang->nomor_izin_usaha}}</td>
@@ -235,6 +243,12 @@
                                                                 <label>Alamat Perusahaan</label>
                                                                 <div class="input-group mb-3">
                                                                     <input name="alamat_perusahaan" type="text" class="form-control" value="{{$kegiatanpenunjang->alamat_perusahaan}}" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Email</label>
+                                                                <div class="input-group mb-3">
+                                                                    <input name="email" type="email" class="form-control" value="{{$kegiatanpenunjang->email}}" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">

@@ -5,7 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee11d08e-bd14-4b42-9169-9a3ff9f8f5d0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/admin/suratkeluar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/admin/suratmasuk.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/bongkarmuat/suratkeluar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/bongkarmuat/suratmasuk.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/pelayaranrakyat/suratkeluar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/pelayaranrakyat/suratmasuk.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/pengurusantransportasi/suratkeluar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/pengurusantransportasi/suratmasuk.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/pelabuhan/suratkeluar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/pelabuhan/suratmasuk.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/penyeberangan/suratkeluar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/penyeberangan/suratmasuk.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/tukstersus/suratkeluar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/tukstersus/suratmasuk.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/KegiatanPenunjangController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/KegiatanPenunjangController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PelabuhanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PelabuhanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PenyeberanganController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PenyeberanganController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TuksTersusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TuksTersusController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/admin/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/admin/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/admin/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/admin/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/admin/kegiatanpenunjang.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/admin/kegiatanpenunjang.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/admin/pelabuhan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/admin/pelabuhan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/admin/penyeberangan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/admin/penyeberangan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/admin/tukstersus.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/admin/tukstersus.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/bongkarmuat/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/bongkarmuat/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/pelayaranrakyat/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/pelayaranrakyat/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/pelayaranrakyat/perla.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/pelayaranrakyat/perla.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/pengurusantransportasi/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/kegiatanpenunjang/pengurusantransportasi/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/pelabuhan/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/pelabuhan/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/penyeberangan/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/penyeberangan/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/tukstersus/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/tukstersus/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/kegiatanpenunjang/mainbongkarmuat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/kegiatanpenunjang/mainbongkarmuat.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/kegiatanpenunjang/mainpelayaranrakyat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/kegiatanpenunjang/mainpelayaranrakyat.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/kegiatanpenunjang/mainpengurusantransportasi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/kegiatanpenunjang/mainpengurusantransportasi.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/mainpelabuhan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/mainpelabuhan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/mainpenyeberangan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/mainpenyeberangan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/maintukstersus.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/maintukstersus.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +188,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../absenku" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -156,11 +199,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\SIMOPEL-Riau\public\img" />
-      <recent name="C:\xampp\htdocs\SIMOPEL-Riau\resources\views\layout\pdf" />
-      <recent name="C:\xampp\htdocs\SIMOPEL-Riau\public\adminlte\plugins" />
-      <recent name="C:\xampp\htdocs\SIMOPEL-Riau\public" />
-      <recent name="C:\xampp\htdocs\SIMOPEL-Riau\resources\views\layout\penyeberangan" />
+      <recent name="C:\xampp\htdocs\SIMOPEL-Riau\resources\views\layout\kegiatanpenunjang\pengurusantransportasi" />
+      <recent name="C:\xampp\htdocs\SIMOPEL-Riau\resources\views\layout\kegiatanpenunjang\pelayaranrakyat" />
+      <recent name="C:\xampp\htdocs\SIMOPEL-Riau\resources\views\layout\kegiatanpenunjang\bongkarmuat" />
+      <recent name="C:\xampp\htdocs\SIMOPEL-Riau\resources\views\layout\kegiatanpenunjang" />
+      <recent name="C:\xampp\htdocs\SIMOPEL-Riau\resources\views\layout\tukstersus" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\SIMOPEL-Riau\resources\views\layout\kegiatanpenunjang\bongkarmuat" />
@@ -219,7 +262,8 @@
       <workItem from="1605369106701" duration="14907000" />
       <workItem from="1605415316499" duration="30768000" />
       <workItem from="1605501265501" duration="24242000" />
-      <workItem from="1605537390784" duration="1148000" />
+      <workItem from="1605537390784" duration="21053000" />
+      <workItem from="1605595965168" duration="17603000" />
     </task>
     <servers />
   </component>
@@ -235,16 +279,16 @@
       <screen x="1366" y="0" width="1440" height="860" />
     </state>
     <state x="1839" y="12" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728/1366.0.1440.860@1366.0.1440.860" timestamp="1605121110791" />
-    <state x="1801" y="141" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605528600532">
+    <state x="1801" y="141" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605614724180">
       <screen x="1366" y="0" width="1440" height="860" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1440.860@0.0.1366.728" timestamp="1604918626813" />
-    <state x="1801" y="141" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1440.860@1366.0.1440.860" timestamp="1605528600532" />
+    <state x="1801" y="141" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1440.860@1366.0.1440.860" timestamp="1605614724180" />
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1603783536229" />
-    <state x="1854" y="141" key="FileChooserDialogImpl" timestamp="1605370603387">
+    <state x="1854" y="141" key="FileChooserDialogImpl" timestamp="1605606218640">
       <screen x="1366" y="0" width="1440" height="860" />
     </state>
-    <state x="1854" y="141" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1440.860@1366.0.1440.860" timestamp="1605370603387" />
+    <state x="1854" y="141" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1440.860@1366.0.1440.860" timestamp="1605606218640" />
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1605360885991" />
     <state x="517" y="287" key="NewPhpFileDialog" timestamp="1603467537434">
       <screen x="0" y="0" width="1366" height="728" />
@@ -254,10 +298,10 @@
       <screen x="1366" y="0" width="1440" height="860" />
     </state>
     <state width="523" height="446" key="SwitcherDM/0.0.1366.728/1366.0.1440.860@1366.0.1440.860" timestamp="1605106688877" />
-    <state x="1742" y="195" key="run.anything.popup" timestamp="1605422952375">
+    <state x="1742" y="195" key="run.anything.popup" timestamp="1605615692485">
       <screen x="1366" y="0" width="1440" height="860" />
     </state>
-    <state x="1742" y="195" key="run.anything.popup/0.0.1366.728/1366.0.1440.860@1366.0.1440.860" timestamp="1605422952375" />
+    <state x="1742" y="195" key="run.anything.popup/0.0.1366.728/1366.0.1440.860@1366.0.1440.860" timestamp="1605615692485" />
     <state x="1749" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1605113588195">
       <screen x="1366" y="0" width="1440" height="860" />
     </state>

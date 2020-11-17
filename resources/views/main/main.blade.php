@@ -134,6 +134,32 @@
                 </li>
             </ul>
           </li>
+            <li class="nav-item has-treeview {{
+                Request::is ('admin/suratMasuk') ? 'menu-open' : '' ||
+                Request::is ('admin/suratKeluar') ? 'menu-open' : ''
+                }}">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-mail-bulk"></i>
+                    <p>
+                        Surat
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="<?=url('/')?>/admin/suratMasuk" class="nav-link {{ Request::is ('admin/suratMasuk') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Surat Masuk</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?=url('/')?>/admin/suratKeluar" class="nav-link {{ Request::is ('admin/suratKeluar') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Surat Keluar</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item">
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#logout">
                     <i class="nav-icon fas fa-sign-out-alt"></i>

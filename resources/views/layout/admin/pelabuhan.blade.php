@@ -104,6 +104,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
+                                                <label>Email</label>
+                                                <div class="input-group mb-3">
+                                                    <input name="email" type="email" class="form-control" placeholder="Email@gmail.com" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Level Akses</label>
                                                 <div class="input-group mb-3">
                                                     <input name="level_akses" type="text" class="form-control" value="Pelabuhan" readonly required>
@@ -148,6 +154,7 @@
                                     <th>Nama Pelabuhan</th>
                                     <th>Alamat Pelabuhan</th>
                                     <th>Posisi Koordinat</th>
+                                    <th>Email</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
@@ -162,6 +169,7 @@
                                     <td>{{$pelabuhan->nama_pelabuhan}}</td>
                                     <td>{{$pelabuhan->alamat_pelabuhan}}</td>
                                     <td>{{$pelabuhan->posisi_pelabuhan}}</td>
+                                    <td>{{$pelabuhan->email}}</td>
                                     <td align="center">
                                         <!-- Detail Pelabuhan -->
                                         <a href="#" class="btn btn-sm bg-gradient-primary" data-toggle="modal" data-target="#detailPelabuhan{{$pelabuhan->id}}"><i class="fas fa-pen-alt"></i></a>
@@ -193,6 +201,12 @@
                                                                 <label>Posisi Koordinat</label>
                                                                 <div class="input-group mb-3">
                                                                     <input name="posisi_pelabuhan" type="text" class="form-control" value="{{$pelabuhan->posisi_pelabuhan}}" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Email</label>
+                                                                <div class="input-group mb-3">
+                                                                    <input name="email" type="email" class="form-control" value="{{$pelabuhan->email}}" required>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">

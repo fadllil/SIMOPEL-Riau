@@ -130,6 +130,32 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview {{
+                        Request::is ('tukstersus/suratMasuk') ? 'menu-open' : '' ||
+                        Request::is ('tukstersus/suratKeluar') ? 'menu-open' : ''
+                        }}">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-mail-bulk"></i>
+                            <p>
+                                Surat
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?=url('/')?>/tukstersus/suratMasuk" class="nav-link {{ Request::is ('tukstersus/suratMasuk') ? 'active' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Surat Masuk</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?=url('/')?>/tukstersus/suratKeluar" class="nav-link {{ Request::is ('tukstersus/suratKeluar') ? 'active' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Surat Keluar</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" data-toggle="modal" data-target="#logout">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -255,5 +281,102 @@
         minViewMode: 'years'
     })
 </script>
+<?php if ((Request::is ('tukstersus/home')) == true){ ?>
+<script>
+    $(function () {
+
+        /* ChartJS
+         * -------
+         * Here we will create a few charts using ChartJS
+         */
+
+        //--------------
+        //- AREA CHART -
+        //--------------
+        var areaChartData = {
+            labels: [
+                'Januari', 'Februari', 'Maret', 'April', 'Mei',
+                'Juni', 'Juli', 'Agustus', 'September', 'Oktober',
+                'November', 'Desember'],
+            datasets: [
+                {
+                    label: 'Operasional',
+                    backgroundColor: 'rgba(60,141,188,0.9)',
+                    borderColor: 'rgba(60,141,188,0.8)',
+                    pointRadius: false,
+                    pointColor: '#3b8bba',
+                    pointStrokeColor: 'rgba(60,141,188,1)',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(60,141,188,1)',
+                    data: [
+                        {{count($ope[0])}},
+                        {{count($ope[1])}},
+                        {{count($ope[2])}},
+                        {{count($ope[3])}},
+                        {{count($ope[4])}},
+                        {{count($ope[5])}},
+                        {{count($ope[6])}},
+                        {{count($ope[7])}},
+                        {{count($ope[8])}},
+                        {{count($ope[9])}},
+                        {{count($ope[10])}},
+                        {{count($ope[11])}},
+                    ]
+                },
+                {
+                    label: 'Bongkar Muat',
+                    backgroundColor: 'rgba(210, 214, 222, 1)',
+                    borderColor: 'rgba(210, 214, 222, 1)',
+                    pointRadius: false,
+                    pointColor: 'rgba(210, 214, 222, 1)',
+                    pointStrokeColor: '#c1c7d1',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(220,220,220,1)',
+                    data: [
+                        {{count($bm[0])}},
+                        {{count($bm[1])}},
+                        {{count($bm[2])}},
+                        {{count($bm[3])}},
+                        {{count($bm[4])}},
+                        {{count($bm[5])}},
+                        {{count($bm[6])}},
+                        {{count($bm[7])}},
+                        {{count($bm[8])}},
+                        {{count($bm[9])}},
+                        {{count($bm[10])}},
+                        {{count($bm[11])}},
+                    ]
+                },
+            ]
+        }
+
+        // This will get the first returned node in the jQuery collection.
+        var barChartCanvas = $('#barChart').get(0).getContext('2d')
+
+        //-------------
+        //- BAR CHART -
+        //-------------
+
+        var barChartData = jQuery.extend(true, {}, areaChartData)
+        var temp0 = areaChartData.datasets[0]
+        var temp1 = areaChartData.datasets[1]
+        barChartData.datasets[0] = temp1
+        barChartData.datasets[1] = temp0
+
+        var barChartOptions = {
+            responsive              : true,
+            maintainAspectRatio     : false,
+            datasetFill             : false
+        }
+
+        var barChart = new Chart(barChartCanvas, {
+            type: 'bar',
+            data: barChartData,
+            options: barChartOptions
+        })
+
+    })
+</script>
+<?php } ?>
 </body>
 </html>

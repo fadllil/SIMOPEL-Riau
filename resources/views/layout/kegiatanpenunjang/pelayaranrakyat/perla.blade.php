@@ -292,39 +292,39 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Modal -->
-                            <button type="button" class="btn btn-block bg-gradient-primary" data-toggle="modal" data-target="#cetakPDFTahunan"><i class="fas fa-file-pdf"> Cetak PDF Tahunan</i></button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="cetakPDFTahunan" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalScrollableTitle">Cetak PDF Tahunan</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="<?= url('/') ?>/kegiatanpenunjang/cetakPDFTahunanPerla" method="post" >
-                                                {{csrf_field()}}
-                                                <div class="form-group">
-                                                    <label>Tahun</label>
-                                                    <div class="input-group date">
-                                                        <input name="picktahun" type="text" class="form-control pull-right" id="picktahun" placeholder="yyyy" autocomplete="off" required>
-                                                    </div>
-                                                    <!-- /.input group -->
-                                                </div>
-                                                <!-- /.form group -->
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Modal -->
+{{--                            <!-- End Modal -->--}}
+{{--                            <button type="button" class="btn btn-block bg-gradient-primary" data-toggle="modal" data-target="#cetakPDFTahunan"><i class="fas fa-file-pdf"> Cetak PDF Tahunan</i></button>--}}
+{{--                            <!-- Modal -->--}}
+{{--                            <div class="modal fade" id="cetakPDFTahunan" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">--}}
+{{--                                <div class="modal-dialog modal-dialog-scrollable" role="document">--}}
+{{--                                    <div class="modal-content">--}}
+{{--                                        <div class="modal-header">--}}
+{{--                                            <h5 class="modal-title" id="exampleModalScrollableTitle">Cetak PDF Tahunan</h5>--}}
+{{--                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                                                <span aria-hidden="true">&times;</span>--}}
+{{--                                            </button>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="modal-body">--}}
+{{--                                            <form action="<?= url('/') ?>/kegiatanpenunjang/cetakPDFTahunanPerla" method="post" >--}}
+{{--                                                {{csrf_field()}}--}}
+{{--                                                <div class="form-group">--}}
+{{--                                                    <label>Tahun</label>--}}
+{{--                                                    <div class="input-group date">--}}
+{{--                                                        <input name="picktahun" type="text" class="form-control pull-right" id="picktahun" placeholder="yyyy" autocomplete="off" required>--}}
+{{--                                                    </div>--}}
+{{--                                                    <!-- /.input group -->--}}
+{{--                                                </div>--}}
+{{--                                                <!-- /.form group -->--}}
+{{--                                                <div class="modal-footer">--}}
+{{--                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
+{{--                                                    <button type="submit" class="btn btn-primary">Simpan</button>--}}
+{{--                                                </div>--}}
+{{--                                            </form>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <!-- End Modal -->--}}
                         </div>
                     </div>
                     <!-- /.card-header -->

@@ -117,6 +117,32 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview {{
+                        Request::is ('kegiatanpenunjang/pengurusantransportasi/suratMasuk') ? 'menu-open' : '' ||
+                        Request::is ('kegiatanpenunjang/pengurusantransportasi/suratKeluar') ? 'menu-open' : ''
+                        }}">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-mail-bulk"></i>
+                            <p>
+                                Surat
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?=url('/')?>/kegiatanpenunjang/pengurusantransportasi/suratMasuk" class="nav-link {{ Request::is ('kegiatanpenunjang/pengurusantransportasi/suratMasuk') ? 'active' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Surat Masuk</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?=url('/')?>/kegiatanpenunjang/pengurusantransportasi/suratKeluar" class="nav-link {{ Request::is ('kegiatanpenunjang/pengurusantransportasi/suratKeluar') ? 'active' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Surat Keluar</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" data-toggle="modal" data-target="#logout">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -242,5 +268,76 @@
         minViewMode: 'years'
     })
 </script>
+<?php if ((Request::is ('kegiatanpenunjang/pengurusantransportasi/home')) == true){ ?>
+<script>
+    $(function () {
+
+        /* ChartJS
+         * -------
+         * Here we will create a few charts using ChartJS
+         */
+
+        //--------------
+        //- AREA CHART -
+        //--------------
+        var areaChartData = {
+            labels: [
+                'Januari', 'Februari', 'Maret', 'April', 'Mei',
+                'Juni', 'Juli', 'Agustus', 'September', 'Oktober',
+                'November', 'Desember'],
+            datasets: [
+                {
+                    label: 'Pengurusan Transportasi',
+                    backgroundColor: 'rgba(60,141,188,0.9)',
+                    borderColor: 'rgba(60,141,188,0.8)',
+                    pointRadius: false,
+                    pointColor: '#3b8bba',
+                    pointStrokeColor: 'rgba(60,141,188,1)',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(60,141,188,1)',
+                    data: [
+                        {{count($pt[0])}},
+                        {{count($pt[1])}},
+                        {{count($pt[2])}},
+                        {{count($pt[3])}},
+                        {{count($pt[4])}},
+                        {{count($pt[5])}},
+                        {{count($pt[6])}},
+                        {{count($pt[7])}},
+                        {{count($pt[8])}},
+                        {{count($pt[9])}},
+                        {{count($pt[10])}},
+                        {{count($pt[11])}},
+                    ]
+                },
+            ]
+        }
+
+        // This will get the first returned node in the jQuery collection.
+        var barChartCanvas = $('#barChart').get(0).getContext('2d')
+
+        //-------------
+        //- BAR CHART -
+        //-------------
+
+        var barChartData = jQuery.extend(true, {}, areaChartData)
+        var temp0 = areaChartData.datasets[0]
+        barChartData.datasets[0] = temp0
+
+        var barChartOptions = {
+            responsive              : true,
+            maintainAspectRatio     : false,
+            datasetFill             : false
+        }
+
+        var barChart = new Chart(barChartCanvas, {
+            type: 'bar',
+            data: barChartData,
+            options: barChartOptions
+        })
+
+    })
+</script>
+<?php } ?>
 </body>
 </html>

@@ -104,6 +104,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
+                                                <label>Email</label>
+                                                <div class="input-group mb-3">
+                                                    <input name="email" type="email" class="form-control" placeholder="Email@gmail.com" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Level Akses</label>
                                                 <div class="input-group mb-3">
                                                     <input name="level_akses" type="text" class="form-control" value="Tuks/Tersus" readonly required>
@@ -171,6 +177,7 @@
                                     <th rowspan="2" style="width: 10px;">No</th>
                                     <th colspan="2">Perusahaan</th>
                                     <th rowspan="2">Bidang Usaha</th>
+                                    <th rowspan="2">Email</th>
                                     <th rowspan="2">NPWP</th>
                                     <th rowspan="2">NIB</th>
                                     <th rowspan="2">Nama Penanggung Jawab</th>
@@ -193,6 +200,7 @@
                                     <td>{{$tukstersus->nama_perusahaan}}</td>
                                     <td>{{$tukstersus->alamat_perusahaan}}</td>
                                     <td>{{$tukstersus->bidang_usaha}}</td>
+                                    <td>{{$tukstersus->email}}</td>
                                     <td>{{$tukstersus->npwp}}</td>
                                     <td>{{$tukstersus->nib}}</td>
                                     <td>{{$tukstersus->nama_pj}}</td>
@@ -222,6 +230,12 @@
                                                                 <label>Alamat</label>
                                                                 <div class="input-group mb-3">
                                                                     <input name="alamat_perusahaan" type="text" class="form-control" value="{{$tukstersus->alamat_perusahaan}}" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Email</label>
+                                                                <div class="input-group mb-3">
+                                                                    <input name="email" type="email" class="form-control" value="{{$tukstersus->email}}" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">

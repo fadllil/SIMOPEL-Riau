@@ -11,8 +11,12 @@ use App\KegiatanPenunjangPerla;
 use App\OperasionalPelabuhan;
 use App\Pelabuhan;
 use App\Perencanaan;
+use App\Surat;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use PDF;
 
@@ -27,19 +31,97 @@ class KegiatanPenunjangController extends Controller
     // Home Bongkar Muat
     public function homeBongkarMuat(){
         $user = $this->getUser();
-        return view('layout.kegiatanpenunjang.bongkarmuat.home', compact('user'));
+        $time = Carbon::now();
+
+        $bm = [];
+        $bulan = 12;
+        for ($i = 1; $i <= $bulan; $i++){
+            $dates = "01-".$i.'-'.$time->format('Y');
+            $tgl = new Carbon($dates);
+            $tgl->format('Y-m-d');
+            $bongkarmuat = KegiatanPenunjangBongkarMuat::where('id_perusahaan' , $user->id)
+                ->whereYear('mulai', '=', $tgl)
+                ->whereMonth('mulai', '=', $tgl)
+                ->orderBy('mulai', 'asc')
+                ->get();
+
+            array_push( $bm, $bongkarmuat);
+        }
+
+        $bongkarmuat = KegiatanPenunjangBongkarMuat::where('id_perusahaan' , $user->id)
+            ->whereYear('mulai', '=', $time)
+            ->whereMonth('mulai', '=', $time)
+            ->orderBy('mulai', 'asc')
+            ->get();
+        $suratMasuk = Surat::where('id_tujuan', $user->id_user)->get();
+        $suratKeluar = Surat::where('id_user', $user->id_user)->get();
+        return view('layout.kegiatanpenunjang.bongkarmuat.home', compact(
+            'user', 'bongkarmuat', 'suratMasuk', 'suratKeluar', 'bm'
+        ));
     }
 
     // Home Pelayaran Rakyat
     public function homePelayaranRakyat(){
         $user = $this->getUser();
-        return view('layout.kegiatanpenunjang.pelayaranrakyat.home', compact('user'));
+        $time = Carbon::now();
+
+        $pr = [];
+        $bulan = 12;
+        for ($i = 1; $i <= $bulan; $i++){
+            $dates = "01-".$i.'-'.$time->format('Y');
+            $tgl = new Carbon($dates);
+            $tgl->format('Y-m-d');
+            $perla = KegiatanPenunjangPerla::where('id_perusahaan' , $user->id)
+                ->whereYear('tb_tgl', '=', $tgl)
+                ->whereMonth('tb_tgl', '=', $tgl)
+                ->orderBy('tb_tgl', 'asc')
+                ->get();
+
+            array_push( $pr, $perla);
+        }
+
+        $perla = KegiatanPenunjangPerla::where('id_perusahaan' , $user->id)
+            ->whereYear('tb_tgl', '=', $time)
+            ->whereMonth('tb_tgl', '=', $time)
+            ->orderBy('tb_tgl', 'asc')
+            ->get();
+        $suratMasuk = Surat::where('id_tujuan', $user->id_user)->get();
+        $suratKeluar = Surat::where('id_user', $user->id_user)->get();
+        return view('layout.kegiatanpenunjang.pelayaranrakyat.home', compact(
+            'user', 'perla', 'suratMasuk', 'suratKeluar', 'pr'
+        ));
     }
 
     // Home Pengurusan Transportasi
     public function homePengurusanTransportasi(){
         $user = $this->getUser();
-        return view('layout.kegiatanpenunjang.pengurusantransportasi.home', compact('user'));
+        $time = Carbon::now();
+
+        $pt = [];
+        $bulan = 12;
+        for ($i = 1; $i <= $bulan; $i++){
+            $dates = "01-".$i.'-'.$time->format('Y');
+            $tgl = new Carbon($dates);
+            $tgl->format('Y-m-d');
+            $pengurusan = KegiatanPenunjangPengurusanTransportasi::where('id_perusahaan' , $user->id)
+                ->whereYear('tanggal', '=', $tgl)
+                ->whereMonth('tanggal', '=', $tgl)
+                ->orderBy('tanggal', 'asc')
+                ->get();
+
+            array_push( $pt, $pengurusan);
+        }
+
+        $pengurusan = KegiatanPenunjangPengurusanTransportasi::where('id_perusahaan' , $user->id)
+            ->whereYear('tanggal', '=', $time)
+            ->whereMonth('tanggal', '=', $time)
+            ->orderBy('tanggal', 'asc')
+            ->get();
+        $suratMasuk = Surat::where('id_tujuan', $user->id_user)->get();
+        $suratKeluar = Surat::where('id_user', $user->id_user)->get();
+        return view('layout.kegiatanpenunjang.pengurusantransportasi.home', compact(
+            'user', 'pengurusan', 'suratMasuk', 'suratKeluar', 'pt'
+        ));
     }
 
     // View Profil Perusahaan Bongkar Muat
@@ -517,5 +599,266 @@ class KegiatanPenunjangController extends Controller
         ));
         $pdf->setPaper(array(0,0,612.00,1008.00), 'landscape');
         return $pdf->stream();
+    }
+
+    // Controller Surat Masuk Bongkar Muat
+    public function suratMasukBongkarMuat(){
+        $user = $this->getUser();
+        if(!Session::has('user')){
+            return redirect('login')->with('alert','Kamu harus login dulu');
+        }else{
+            $value = Session::get('user');
+            $surat_list = DB::table('tb_surat')
+                ->where('id_tujuan', $value->id)
+                ->join('users', 'tb_surat.id_user','=','users.id')
+                ->select('tb_surat.*', 'users.email')
+                ->get();
+            return view('layout.kegiatanpenunjang.bongkarmuat.suratmasuk', compact('surat_list', 'value', 'user'));
+        }
+    }
+
+    // Controller Surat Keluar Bongkar Muat
+    public function suratKeluarBongkarMuat(){
+        $user = $this->getUser();
+        if(!Session::has('user')){
+            return redirect('login')->with('alert','Kamu harus login dulu');
+        }else{
+            $value = Session::get('user');
+            $tujuan_list = User::where('level_akses', 'Admin')->get();
+            $surat_list = DB::table('tb_surat')
+                ->where('id_user', $value->id)
+                ->join('users', 'tb_surat.id_tujuan','=','users.id')
+                ->select('tb_surat.*', 'users.email')
+                ->get();
+            return view('layout.kegiatanpenunjang.bongkarmuat.suratkeluar', compact('surat_list', 'value', 'user', 'tujuan_list'));
+        }
+    }
+
+    // Tambah Surat Bongkar Muat
+    public function tambahSuratBongkarMuat(Request $request){
+
+        $user = $this->getUser();
+        $tujuan = User::where('email', $request->email)->first();
+        $surat = new Surat();
+        $surat->id_user = $user->id_user;
+        $surat->id_tujuan = $tujuan->id;
+        $surat->judul = $request->judul;
+        $surat->isi = $request->isi;
+        $surat->file = $request->file;
+        $surat->created_at = Carbon::now();
+        $surat->updated_at = Carbon::now();
+
+        $file = $request->file('file');
+
+        // nama file
+        echo 'File Name: '.$file->getClientOriginalName();
+        echo '<br>';
+
+        // ekstensi file
+        echo 'File Extension: '.$file->getClientOriginalExtension();
+        echo '<br>';
+
+        // real path
+        echo 'File Real Path: '.$file->getRealPath();
+        echo '<br>';
+
+        // ukuran file
+        echo 'File Size: '.$file->getSize();
+        echo '<br>';
+
+        // tipe mime
+        echo 'File Mime Type: '.$file->getMimeType();
+
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'file_surat';
+
+        // upload file
+        $file->move($tujuan_upload, Carbon::now()->format('d-m-Y-H-i-s').$file->getClientOriginalName());
+
+        $surat->file = Carbon::now()->format('d-m-Y-H-i-s').$file->getClientOriginalName();
+        $surat->save();
+        return redirect('/kegiatanpenunjang/bongkarmuat/suratKeluar')->with(['succes' => 'Berhasil mengirim surat!']);
+    }
+
+    // Hapus Surat Bongkar Muat
+    public function hapusSuratBongkarMuat($id){
+        $surat = Surat::FindOrFail($id);
+        File::delete('file_surat/'.$surat->file);
+        $surat->delete();
+        return redirect('/kegiatanpenunjang/bongkarmuat/suratKeluar')->with(['succes' => 'Berhasil Hapus Surat!']);
+    }
+
+    // Controller Surat Masuk Perla
+    public function suratMasukPerla(){
+        $user = $this->getUser();
+        if(!Session::has('user')){
+            return redirect('login')->with('alert','Kamu harus login dulu');
+        }else{
+            $value = Session::get('user');
+            $surat_list = DB::table('tb_surat')
+                ->where('id_tujuan', $value->id)
+                ->join('users', 'tb_surat.id_user','=','users.id')
+                ->select('tb_surat.*', 'users.email')
+                ->get();
+            return view('layout.kegiatanpenunjang.pelayaranrakyat.suratmasuk', compact('surat_list', 'value', 'user'));
+        }
+    }
+
+    // Controller Surat Keluar Perla
+    public function suratKeluarPerla(){
+        $user = $this->getUser();
+        if(!Session::has('user')){
+            return redirect('login')->with('alert','Kamu harus login dulu');
+        }else{
+            $value = Session::get('user');
+            $tujuan_list = User::where('level_akses', 'Admin')->get();
+            $surat_list = DB::table('tb_surat')
+                ->where('id_user', $value->id)
+                ->join('users', 'tb_surat.id_tujuan','=','users.id')
+                ->select('tb_surat.*', 'users.email')
+                ->get();
+            return view('layout.kegiatanpenunjang.pelayaranrakyat.suratkeluar', compact('surat_list', 'value', 'user', 'tujuan_list'));
+        }
+    }
+
+    // Tambah Surat Perla
+    public function tambahSuratPerla(Request $request){
+
+        $user = $this->getUser();
+        $tujuan = User::where('email', $request->email)->first();
+        $surat = new Surat();
+        $surat->id_user = $user->id_user;
+        $surat->id_tujuan = $tujuan->id;
+        $surat->judul = $request->judul;
+        $surat->isi = $request->isi;
+        $surat->file = $request->file;
+        $surat->created_at = Carbon::now();
+        $surat->updated_at = Carbon::now();
+
+        $file = $request->file('file');
+
+        // nama file
+        echo 'File Name: '.$file->getClientOriginalName();
+        echo '<br>';
+
+        // ekstensi file
+        echo 'File Extension: '.$file->getClientOriginalExtension();
+        echo '<br>';
+
+        // real path
+        echo 'File Real Path: '.$file->getRealPath();
+        echo '<br>';
+
+        // ukuran file
+        echo 'File Size: '.$file->getSize();
+        echo '<br>';
+
+        // tipe mime
+        echo 'File Mime Type: '.$file->getMimeType();
+
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'file_surat';
+
+        // upload file
+        $file->move($tujuan_upload, Carbon::now()->format('d-m-Y-H-i-s').$file->getClientOriginalName());
+
+        $surat->file = Carbon::now()->format('d-m-Y-H-i-s').$file->getClientOriginalName();
+        $surat->save();
+        return redirect('/kegiatanpenunjang/pelayaranrakyat/suratKeluar')->with(['succes' => 'Berhasil mengirim surat!']);
+    }
+
+    // Hapus Surat Perla
+    public function hapusSuratPerla($id){
+        $surat = Surat::FindOrFail($id);
+        File::delete('file_surat/'.$surat->file);
+        $surat->delete();
+        return redirect('/kegiatanpenunjang/pelayaranrakyat/suratKeluar')->with(['succes' => 'Berhasil Hapus Surat!']);
+    }
+
+    // Controller Surat Masuk Pengurusan Transportasi
+    public function suratMasukPengurusanTransportasi(){
+        $user = $this->getUser();
+        if(!Session::has('user')){
+            return redirect('login')->with('alert','Kamu harus login dulu');
+        }else{
+            $value = Session::get('user');
+            $surat_list = DB::table('tb_surat')
+                ->where('id_tujuan', $value->id)
+                ->join('users', 'tb_surat.id_user','=','users.id')
+                ->select('tb_surat.*', 'users.email')
+                ->get();
+            return view('layout.kegiatanpenunjang.pengurusantransportasi.suratmasuk', compact('surat_list', 'value', 'user'));
+        }
+    }
+
+    // Controller Surat Keluar Pengurusan Transportasi
+    public function suratKeluarPengurusanTransportasi(){
+        $user = $this->getUser();
+        if(!Session::has('user')){
+            return redirect('login')->with('alert','Kamu harus login dulu');
+        }else{
+            $value = Session::get('user');
+            $tujuan_list = User::where('level_akses', 'Admin')->get();
+            $surat_list = DB::table('tb_surat')
+                ->where('id_user', $value->id)
+                ->join('users', 'tb_surat.id_tujuan','=','users.id')
+                ->select('tb_surat.*', 'users.email')
+                ->get();
+            return view('layout.kegiatanpenunjang.pengurusantransportasi.suratkeluar', compact('surat_list', 'value', 'user', 'tujuan_list'));
+        }
+    }
+
+    // Tambah Surat Pengurusan Transportasi
+    public function tambahSuratPengurusanTransportasi(Request $request){
+
+        $user = $this->getUser();
+        $tujuan = User::where('email', $request->email)->first();
+        $surat = new Surat();
+        $surat->id_user = $user->id_user;
+        $surat->id_tujuan = $tujuan->id;
+        $surat->judul = $request->judul;
+        $surat->isi = $request->isi;
+        $surat->file = $request->file;
+        $surat->created_at = Carbon::now();
+        $surat->updated_at = Carbon::now();
+
+        $file = $request->file('file');
+
+        // nama file
+        echo 'File Name: '.$file->getClientOriginalName();
+        echo '<br>';
+
+        // ekstensi file
+        echo 'File Extension: '.$file->getClientOriginalExtension();
+        echo '<br>';
+
+        // real path
+        echo 'File Real Path: '.$file->getRealPath();
+        echo '<br>';
+
+        // ukuran file
+        echo 'File Size: '.$file->getSize();
+        echo '<br>';
+
+        // tipe mime
+        echo 'File Mime Type: '.$file->getMimeType();
+
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'file_surat';
+
+        // upload file
+        $file->move($tujuan_upload, Carbon::now()->format('d-m-Y-H-i-s').$file->getClientOriginalName());
+
+        $surat->file = Carbon::now()->format('d-m-Y-H-i-s').$file->getClientOriginalName();
+        $surat->save();
+        return redirect('/kegiatanpenunjang/pengurusantransportasi/suratKeluar')->with(['succes' => 'Berhasil mengirim surat!']);
+    }
+
+    // Hapus Surat Pengurusan Transportasi
+    public function hapusSuratPengurusanTransportasi($id){
+        $surat = Surat::FindOrFail($id);
+        File::delete('file_surat/'.$surat->file);
+        $surat->delete();
+        return redirect('/kegiatanpenunjang/pengurusantransportasi/suratKeluar')->with(['succes' => 'Berhasil Hapus Surat!']);
     }
 }

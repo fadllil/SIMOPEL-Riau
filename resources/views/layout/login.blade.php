@@ -7,7 +7,7 @@
     <title>AdminLTE 3 | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="<?=url('/')?>/img/logo.png" type="image/icon type">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?=url('/')?>/adminlte/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->

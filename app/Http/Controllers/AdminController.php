@@ -17,6 +17,7 @@ use App\Perencanaan;
 use App\Surat;
 use App\TuksTersus;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -48,7 +49,7 @@ class AdminController extends Controller
             $value = Session::get('user');
             $admin_list = DB::table('tb_admin')
                 ->join('users', 'tb_admin.id_user','=','users.id')
-                ->select('tb_admin.*', 'users.username', 'users.password')
+                ->select('tb_admin.*', 'users.username', 'users.password', 'users.email')
                 ->get();
             return view('layout.admin.admin', compact('admin_list', 'value', 'user'));
         }
@@ -59,6 +60,7 @@ class AdminController extends Controller
         $username = $request->username;
         $password = $request->password;
         $level_akses= $request->level_akses;
+        $email= $request->email;
         $nama = $request->nama;
         $jabatan = $request->jabatan;
 
@@ -66,6 +68,7 @@ class AdminController extends Controller
         $user->username =$username;
         $user->password =md5($password);
         $user->level_akses =$level_akses;
+        $user->email =$email;
 
         if (User::where('username', $username)->first()){
             return redirect('/admin/admin')->with(['warning' => 'Username admin sudah terdaftar!']);
@@ -91,7 +94,10 @@ class AdminController extends Controller
     // Edit Data Admin
     public function editAdmin($id, Request $request){
         $admin = Admin::findOrFail($id);
+        $user = User::findOrFail($admin->id_user);
         $admin->update($request->all());
+        $user->email = $request->email;
+        $user->update();
         return redirect('/admin/admin')->with(['succes' => 'Berhasil melakukan perubahan data!']);
     }
 
@@ -114,7 +120,7 @@ class AdminController extends Controller
             $value = Session::get('user');
             $pelabuhan_list = DB::table('tb_pelabuhan')
                 ->join('users', 'tb_pelabuhan.id_user','=','users.id')
-                ->select('tb_pelabuhan.*', 'users.username', 'users.password')
+                ->select('tb_pelabuhan.*', 'users.username', 'users.password', 'users.email')
                 ->get();
             return view('layout.admin.pelabuhan', compact('pelabuhan_list', 'value', 'user'));
         }
@@ -125,6 +131,7 @@ class AdminController extends Controller
         $username = $request->username;
         $password = $request->password;
         $level_akses= $request->level_akses;
+        $email = $request->email;
         $nama_pelabuhan = $request->nama_pelabuhan;
         $alamat_pelabuhan = $request->alamat_pelabuhan;
         $posisi_pelabuhan = $request->posisi_pelabuhan;
@@ -133,6 +140,7 @@ class AdminController extends Controller
         $user->username =$username;
         $user->password =md5($password);
         $user->level_akses =$level_akses;
+        $user->email = $email;
 
         if (User::where('username', $username)->first()){
             return redirect('/admin/pelabuhan')->with(['warning' => 'Username pelabuhan sudah terdaftar!']);
@@ -189,7 +197,10 @@ class AdminController extends Controller
     // Edit Data Pelabuhan
     public function editPelabuhan($id, Request $request){
         $pelabuhan = Pelabuhan::findOrFail($id);
+        $user = User::findOrFail($pelabuhan->id_user);
+        $user->email = $request->email;
         $pelabuhan->update($request->all());
+        $user->update();
         return redirect('/admin/pelabuhan')->with(['succes' => 'Berhasil melakukan perubahan data!']);
     }
 
@@ -226,7 +237,7 @@ class AdminController extends Controller
             $value = Session::get('user');
             $penyeberangan_list = DB::table('tb_penyeberangan')
                 ->join('users', 'tb_penyeberangan.id_user','=','users.id')
-                ->select('tb_penyeberangan.*', 'users.username', 'users.password')
+                ->select('tb_penyeberangan.*', 'users.username', 'users.password', 'users.email')
                 ->get();
             return view('layout.admin.penyeberangan', compact('penyeberangan_list', 'value', 'user'));
         }
@@ -237,15 +248,17 @@ class AdminController extends Controller
         $username = $request->username;
         $password = $request->password;
         $level_akses= $request->level_akses;
+        $email = $request->email;
         $nama_penyeberangan = $request->nama_penyeberangan;
         $alamat_penyeberangan = $request->alamat_penyeberangan;
         $posisi_penyeberangan = $request->posisi_penyeberangan;
 
         // Simpan Data Pada tb_users
         $user = new User();
-        $user->username =$username;
+        $user->username = $username;
         $user->password =md5($password);
         $user->level_akses =$level_akses;
+        $user->email = $email;
 
         if (User::where('username', $username)->first()){
             return redirect('/admin/penyeberangan')->with(['warning' => 'Username penyeberangan sudah terdaftar!']);
@@ -301,7 +314,10 @@ class AdminController extends Controller
     // Edit Data Penyeberangan
     public function editPenyeberangan($id, Request $request){
         $penyeberangan = Penyeberangan::findOrFail($id);
+        $user = User::findOrFail($penyeberangan->id_user);
+        $user->email = $request->email;
         $penyeberangan->update($request->all());
+        $user->update();
         return redirect('/admin/penyeberangan')->with(['succes' => 'Berhasil melakukan perubahan data!']);
     }
 
@@ -338,7 +354,7 @@ class AdminController extends Controller
             $value = Session::get('user');
             $tukstersus_list = DB::table('tb_tukstersus')
                 ->join('users', 'tb_tukstersus.id_user','=','users.id')
-                ->select('tb_tukstersus.*', 'users.username', 'users.password')
+                ->select('tb_tukstersus.*', 'users.username', 'users.password', 'users.email')
                 ->get();
             return view('layout.admin.tukstersus', compact('tukstersus_list', 'value', 'user'));
         }
@@ -349,6 +365,7 @@ class AdminController extends Controller
         $username = $request->username;
         $password = $request->password;
         $level_akses= $request->level_akses;
+        $email= $request->email;
         $nama_perusahaan = $request->nama_perusahaan;
         $alamat_perusahaan = $request->alamat_perusahaan;
         $bidang_usaha = $request->bidang_usaha;
@@ -361,6 +378,7 @@ class AdminController extends Controller
         $user->username =$username;
         $user->password =md5($password);
         $user->level_akses =$level_akses;
+        $user->email =$email;
 
         if (User::where('username', $username)->first()){
             return redirect('/admin/tukstersus')->with(['warning' => 'Username perusahaan sudah terdaftar!']);
@@ -421,7 +439,10 @@ class AdminController extends Controller
     // Edit Data TuksTersus
     public function editTuksTersus($id, Request $request){
         $tukstersus = TuksTersus::findOrFail($id);
+        $user = User::findOrFail($tukstersus->id_user);
+        $user->email = $request->email;
         $tukstersus->update($request->all());
+        $user->update();
         return redirect('/admin/tukstersus')->with(['succes' => 'Berhasil melakukan perubahan data!']);
     }
 
@@ -458,7 +479,7 @@ class AdminController extends Controller
             $value = Session::get('user');
             $kegiatanpenunjang_list = DB::table('tb_kegiatanpenunjang')
                 ->join('users', 'tb_kegiatanpenunjang.id_user','=','users.id')
-                ->select('tb_kegiatanpenunjang.*', 'users.username', 'users.password')
+                ->select('tb_kegiatanpenunjang.*', 'users.username', 'users.password', 'users.email')
                 ->get();
             return view('layout.admin.kegiatanpenunjang', compact('kegiatanpenunjang_list', 'value', 'user'));
         }
@@ -468,7 +489,8 @@ class AdminController extends Controller
     public function tambahKegiatanPenunjang(Request $request){
         $username = $request->username;
         $password = $request->password;
-        $level_akses= $request->level_akses;
+        $level_akses = $request->level_akses;
+        $email = $request->email;
         $nama_perusahaan = $request->nama_perusahaan;
         $alamat_perusahaan = $request->alamat_perusahaan;
         $bidang_usaha = $request->bidang_usaha;
@@ -482,6 +504,7 @@ class AdminController extends Controller
         $user->username =$username;
         $user->password =md5($password);
         $user->level_akses =$level_akses;
+        $user->email = $email;
 
         if (User::where('username', $username)->first()){
             return redirect('/admin/tukstersus')->with(['warning' => 'Username perusahaan sudah terdaftar!']);
@@ -512,7 +535,10 @@ class AdminController extends Controller
     // Edit Data Kegiatan Penunjang
     public function editKegiatanPenunjang($id, Request $request){
         $kegiatanpenunjang = KegiatanPenunjang::findOrFail($id);
+        $user = User::findOrFail($kegiatanpenunjang->id_user);
+        $user->email = $request->email;
         $kegiatanpenunjang->update($request->all());
+        $user->update();
         return redirect('/admin/kegiatanpenunjang')->with(['succes' => 'Berhasil melakukan perubahan data!']);
     }
 
@@ -526,4 +552,97 @@ class AdminController extends Controller
         return redirect('/admin/kegiatanpenunjang')->with(['succes' => 'Berhasil Hapus Data!']);
     }
     // Tutup Controller KegiatanPenunjang
+
+    // Controller Surat Masuk
+    public function suratMasuk(){
+        $user = $this->User();
+        if(!Session::has('user')){
+            return redirect('login')->with('alert','Kamu harus login dulu');
+        }else{
+            $value = Session::get('user');
+            $surat_list = DB::table('tb_surat')
+                ->where('id_tujuan', $value->id)
+                ->join('users', 'tb_surat.id_user','=','users.id')
+                ->select('tb_surat.*', 'users.email')
+                ->get();
+            return view('layout.admin.suratmasuk', compact('surat_list', 'value', 'user'));
+        }
+    }
+
+    // Controller Surat Keluar
+    public function suratKeluar(){
+        $user = $this->User();
+        if(!Session::has('user')){
+            return redirect('login')->with('alert','Kamu harus login dulu');
+        }else{
+            $value = Session::get('user');
+            $tujuan_list = User::all();
+            $surat_list = DB::table('tb_surat')
+                ->where('id_user', $value->id)
+                ->join('users', 'tb_surat.id_tujuan','=','users.id')
+                ->select('tb_surat.*', 'users.email')
+                ->get();
+            return view('layout.admin.suratkeluar', compact('surat_list', 'value', 'user', 'tujuan_list'));
+        }
+    }
+
+    // Tambah Surat
+    public function tambahSurat(Request $request){
+
+        $user = $this->User();
+        $tujuan = User::where('email', $request->email)->first();
+        $surat = new Surat();
+        $surat->id_user = $user->id_user;
+        $surat->id_tujuan = $tujuan->id;
+        $surat->judul = $request->judul;
+        $surat->isi = $request->isi;
+        $surat->file = $request->file;
+        $surat->created_at = Carbon::now();
+        $surat->updated_at = Carbon::now();
+
+        $file = $request->file('file');
+
+        // nama file
+        echo 'File Name: '.$file->getClientOriginalName();
+        echo '<br>';
+
+        // ekstensi file
+        echo 'File Extension: '.$file->getClientOriginalExtension();
+        echo '<br>';
+
+        // real path
+        echo 'File Real Path: '.$file->getRealPath();
+        echo '<br>';
+
+        // ukuran file
+        echo 'File Size: '.$file->getSize();
+        echo '<br>';
+
+        // tipe mime
+        echo 'File Mime Type: '.$file->getMimeType();
+
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'file_surat';
+
+        // upload file
+        $file->move($tujuan_upload, Carbon::now()->format('d-m-Y-H-i-s').$file->getClientOriginalName());
+
+        $surat->file = Carbon::now()->format('d-m-Y-H-i-s').$file->getClientOriginalName();
+        $surat->save();
+        return redirect('/admin/suratKeluar')->with(['succes' => 'Berhasil mengirim surat!']);
+    }
+
+    // Hapus Surat
+    public function hapusSurat($id){
+        $surat = Surat::FindOrFail($id);
+        File::delete('file_surat/'.$surat->file);
+        $surat->delete();
+        return redirect('/admin/suratKeluar')->with(['succes' => 'Berhasil Hapus Surat!']);
+    }
+
+    // View Surat
+    public function viewSurat($name){
+        $pathToFile = public_path().'/file_surat/'.$name;
+        return response()->file($pathToFile);
+    }
 }

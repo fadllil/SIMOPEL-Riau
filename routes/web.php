@@ -54,6 +54,13 @@ Route::get('/admin/home', 'HomeController@index');
     Route::get('/admin/hapusKegiatanPenunjang/{id}', 'AdminController@hapusKegiatanPenunjang');
     // End Route Admin KegiatanPenunjang
 
+    // Route Admin Surat Masuk Keluar
+    Route::get('/admin/suratMasuk', 'AdminController@suratMasuk');
+    Route::get('/admin/suratKeluar', 'AdminController@suratKeluar');
+    Route::post('/admin/tambahSurat', 'AdminController@tambahSurat');
+    Route::get('/admin/hapusSurat/{id}', 'AdminController@hapusSurat');
+    Route::get('/admin/viewsurat/{name}', 'AdminController@viewSurat');
+
 // End Route Admin
 
 // Route Pelabuhan
@@ -90,6 +97,12 @@ Route::post('/pelabuhan/editFasilitasSarana/{id}', 'PelabuhanController@editFasi
     Route::get('/pelabuhan/detailPajak&RetribusiDaerah/{id}', 'PelabuhanController@detailPajakDanRetribusiDaerah');
     Route::post('/pelabuhan/editPajak&RetribusiDaerah/{id}/{i}', 'PelabuhanController@editPajakDanRetribusiDaerah');
     Route::get('/pelabuhan/pdfPajak&RetribusiDaerah/{id}', 'PelabuhanController@pdfPajakDanRetribusiDaerah');
+
+    // Route Pelabuhan Surat Masuk Keluar
+    Route::get('/pelabuhan/suratMasuk', 'PelabuhanController@suratMasuk');
+    Route::get('/pelabuhan/suratKeluar', 'PelabuhanController@suratKeluar');
+    Route::post('/pelabuhan/tambahSurat', 'PelabuhanController@tambahSurat');
+    Route::get('/pelabuhan/hapusSurat/{id}', 'PelabuhanController@hapusSurat');
 // End Route Pelabuhan
 
 // Route Penyeberangan
@@ -130,6 +143,12 @@ Route::post('/penyeberangan/editFasilitasSarana/{id}', 'PenyeberanganController@
     Route::get('/penyeberangan/detailPenjualanPasMasuk/{id}', 'PenyeberanganController@detailPenjualanPasMasuk');
     Route::post('/penyeberangan/editPenjualanPasMasuk/{id}/{i}', 'PenyeberanganController@editPenjualanPasMasuk');
     Route::get('/penyeberangan/pdfPenjualanPasMasuk/{id}', 'PenyeberanganController@pdfPenjualanPasMasuk');
+
+    // Route Pelabuhan Surat Masuk Keluar
+    Route::get('/penyeberangan/suratMasuk', 'PenyeberanganController@suratMasuk');
+    Route::get('/penyeberangan/suratKeluar', 'PenyeberanganController@suratKeluar');
+    Route::post('/penyeberangan/tambahSurat', 'PenyeberanganController@tambahSurat');
+    Route::get('/penyeberangan/hapusSurat/{id}', 'PenyeberanganController@hapusSurat');
 // End Route Penyeberangan
 
 // Route Tuks Tersus
@@ -162,10 +181,17 @@ Route::post('/tukstersus/editFasilitasSarana/{id}', 'TuksTersusController@editFa
     Route::post('/tukstersus/editSewaPerairan/{id}', 'TuksTersusController@editSewaPerairan');
     Route::get('/tukstersus/hapusSewaPerairan/{id}', 'TuksTersusController@hapusSewaPerairan');
     Route::post('/tukstersus/cetakPDFBulananSewaPerairan', 'TuksTersusController@pdfBulananSewaPerairan');
+
+    // Route Pelabuhan Surat Masuk Keluar
+    Route::get('/tukstersus/suratMasuk', 'TuksTersusController@suratMasuk');
+    Route::get('/tukstersus/suratKeluar', 'TuksTersusController@suratKeluar');
+    Route::post('/tukstersus/tambahSurat', 'TuksTersusController@tambahSurat');
+    Route::get('/tukstersus/hapusSurat/{id}', 'TuksTersusController@hapusSurat');
 // End Route Tuks Tersus
 
 // Route Kegiatan Penunjang
 Route::post('/kegiatanpenunjang/editPerusahaan/{id}', 'KegiatanPenunjangController@editPerusahaan');
+
     // Route Perusahaan Bongkar Muat
     Route::get('/kegiatanpenunjang/bongkarmuat/home', 'KegiatanPenunjangController@homeBongkarMuat');
     Route::get('/kegiatanpenunjang/bongkarmuat/profil', 'KegiatanPenunjangController@profilBongkarMuat');
@@ -175,7 +201,14 @@ Route::post('/kegiatanpenunjang/editPerusahaan/{id}', 'KegiatanPenunjangControll
     Route::get('/kegiatanpenunjang/hapusBongkarMuat/{id}', 'KegiatanPenunjangController@hapusBongkarMuat');
     Route::post('/kegiatanpenunjang/cetakPDFBulananBongkarMuat', 'KegiatanPenunjangController@pdfBulananBongkarMuat');
     Route::post('/kegiatanpenunjang/cetakPDFTahunanBongkarMuat', 'KegiatanPenunjangController@pdfTahunanBongkarMuat');
+
+    // Route Bongkar Muat Surat Masuk Keluar
+    Route::get('/kegiatanpenunjang/bongkarmuat/suratMasuk', 'KegiatanPenunjangController@suratMasukBongkarmuat');
+    Route::get('/kegiatanpenunjang/bongkarmuat/suratKeluar', 'KegiatanPenunjangController@suratKeluarBongkarmuat');
+    Route::post('/kegiatanpenunjang/bongkarmuat/tambahSurat', 'KegiatanPenunjangController@tambahSuratBongkarmuat');
+    Route::get('/kegiatanpenunjang/bongkarmuat/hapusSurat/{id}', 'KegiatanPenunjangController@hapusSuratBongkarmuat');
     // End Route Perusahaan Bongkar Muat
+
     // Route Perusahaan Pelayaran Rakyat
     Route::get('/kegiatanpenunjang/pelayaranrakyat/home', 'KegiatanPenunjangController@homePelayaranRakyat');
     Route::get('/kegiatanpenunjang/pelayaranrakyat/profil', 'KegiatanPenunjangController@profilPelayaranRakyat');
@@ -185,6 +218,12 @@ Route::post('/kegiatanpenunjang/editPerusahaan/{id}', 'KegiatanPenunjangControll
     Route::get('/kegiatanpenunjang/hapusPerla/{id}', 'KegiatanPenunjangController@hapusPerla');
     Route::post('/kegiatanpenunjang/cetakPDFBulananPerla', 'KegiatanPenunjangController@pdfBulananPerla');
     Route::post('/kegiatanpenunjang/cetakPDFTahunanPerla', 'KegiatanPenunjangController@pdfTahunanPerla');
+
+    // Route Pelayaran Rakyat Surat Masuk Keluar
+    Route::get('/kegiatanpenunjang/pelayaranrakyat/suratMasuk', 'KegiatanPenunjangController@suratMasukPerla');
+    Route::get('/kegiatanpenunjang/pelayaranrakyat/suratKeluar', 'KegiatanPenunjangController@suratKeluarPerla');
+    Route::post('/kegiatanpenunjang/pelayaranrakyat/tambahSurat', 'KegiatanPenunjangController@tambahSuratPerla');
+    Route::get('/kegiatanpenunjang/pelayaranrakyat/hapusSurat/{id}', 'KegiatanPenunjangController@hapusSuratPerla');
     // End Route Perusahaan Pelayaran Rakyat
     // Route Perusahaan Pengurusan Transportasi
     Route::get('/kegiatanpenunjang/pengurusantransportasi/home', 'KegiatanPenunjangController@homePengurusanTransportasi');
@@ -195,5 +234,11 @@ Route::post('/kegiatanpenunjang/editPerusahaan/{id}', 'KegiatanPenunjangControll
     Route::get('/kegiatanpenunjang/hapusPengurusanTransportasi/{id}', 'KegiatanPenunjangController@hapusPengurusanTransportasi');
     Route::post('/kegiatanpenunjang/cetakPDFBulananPengurusanTransportasi', 'KegiatanPenunjangController@pdfBulananPengurusanTransportasi');
     Route::post('/kegiatanpenunjang/cetakPDFTahunanPengurusanTransportasi', 'KegiatanPenunjangController@pdfTahunanPengurusanTransportasi');
+
+    // Route Pengurusan Transportasi Surat Masuk Keluar
+    Route::get('/kegiatanpenunjang/pengurusantransportasi/suratMasuk', 'KegiatanPenunjangController@suratMasukPengurusanTransportasi');
+    Route::get('/kegiatanpenunjang/pengurusantransportasi/suratKeluar', 'KegiatanPenunjangController@suratKeluarPengurusanTransportasi');
+    Route::post('/kegiatanpenunjang/pengurusantransportasi/tambahSurat', 'KegiatanPenunjangController@tambahSuratPengurusanTransportasi');
+    Route::get('/kegiatanpenunjang/pengurusantransportasi/hapusSurat/{id}', 'KegiatanPenunjangController@hapusSuratPengurusanTransportasi');
     // End Route Perusahaan Pengurusan Transportasi
 // End Route Kegiatan Penunjang
